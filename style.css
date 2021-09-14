@@ -18,16 +18,23 @@ nav{
     justify-content: center;
     align-items: center;
 }
-form{
-    margin: 1rem;
+#group{
+    margin: 0;
     padding: 0.5rem;
     display: flex;
     flex-direction: row;
-
+}
+#product{
+    margin: 0;
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
 }
 fieldset{
     padding: 1rem 6rem;
     border-color: rgb(168, 168, 168);
+}
+legend{
     font-size: large;
 }
 input{

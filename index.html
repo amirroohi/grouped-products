@@ -6,30 +6,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="./style.css">
+    <link rel="shortcut icon" href="#">
 </head>
 <body>
     <header>
         <nav>
-            <form>
+            <form id="group">
                 <fieldset>
                     <legend>new group</legend>
-                    <label for="new-product-group"></label>
+                    <label for="new-product-group">Add a new group:</label>
                     <input type="text" id="new-product-group" name="new-product-group" placeholder="add new group">
-                    <button id="add-group-btn">add</button>
+                    <button type="button" id="add-group-btn">add</button>
                 </fieldset>
             </form>
-            <form>
+            <form id="product">
                 <fieldset>
                     <legend>new product</legend>
                     <label for="add-new-product"></label>
                     <input type="text" id="add-new-product" name="add-new-product" placeholder="add new product">
-                    <label for=""></label>
+                    <label for="existed-products"> Choose a group:</label>
                     <select name="products" id="existed-products">
                         <option value="juice">juice</option>
                         <option value="laptop">laptop</option>
                         <option value="watch">watch</option>
                     </select>
-                    <input type="submit" value="Submit">
+                    <input type="button" value="Submit">
                 </fieldset>
             </form>
         </nav>
