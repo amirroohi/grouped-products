@@ -19,20 +19,24 @@ nav{
     align-items: center;
 }
 #group{
+    width: 32%;
     margin: 0;
     padding: 0.5rem;
     display: flex;
     flex-direction: row;
 }
 #product{
+    width: 68%;
     margin: 0;
     padding: 0.5rem;
     display: flex;
     flex-direction: column;
 }
 fieldset{
-    padding: 1rem 6rem;
+    width: 100%;
+    padding: 1rem;
     border-color: rgb(168, 168, 168);
+    border-radius: 5px;
 }
 legend{
     font-size: large;
@@ -44,5 +48,34 @@ button{
     padding: 0.5rem;
 }
 select{
+    width: 8rem;
     padding: 0.5rem;
+}
+#product-number{
+    width: 8rem;
+    margin-left: 1rem;
+}
+#product-label{
+    margin-left: 1rem;
+}
+.products{
+    width: 100%;
+    padding: 2rem;
+    margin: 0 auto;
+    background-color: #d9cfe2;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    grid-column-gap: 2rem;
+    grid-row-gap: 2rem;
+}
+.product{
+    width: 100px;
+    height: 100px;
+    padding: 5px;
+    background-color: rgb(250, 244, 193);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }

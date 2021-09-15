@@ -15,29 +15,34 @@
                 <fieldset>
                     <legend>new group</legend>
                     <label for="new-product-group">Add a new group:</label>
-                    <input type="text" id="new-product-group" name="new-product-group" placeholder="add new group">
+                    <input type="text" id="new-product-group" name="new-product-group" placeholder="group name">
                     <button type="button" id="add-group-btn">add</button>
                 </fieldset>
             </form>
             <form id="product">
                 <fieldset>
                     <legend>new product</legend>
-                    <label for="add-new-product"></label>
-                    <input type="text" id="add-new-product" name="add-new-product" placeholder="add new product">
-                    <label for="existed-products"> Choose a group:</label>
-                    <select name="products" id="existed-products">
-                        <option value="juice">juice</option>
-                        <option value="laptop">laptop</option>
-                        <option value="watch">watch</option>
+                    <label for="existed-groups"> Choose a group:</label>
+                    <select name="groups" id="existed-groups">
+                        <!-- <option value="reza">reza</option>
+                        <option value="amir">amir</option> -->
                     </select>
-                    <input type="button" value="Submit">
+                    <label for="add-new-product" id="product-label">Add new products:</label>
+                    <input type="text" id="add-new-product" name="add-new-product" placeholder="product name">
+                    <button type="button" id="add-product-btn">add</button>
+                    <input type="number" id="product-number" placeholder="How many ...?" value="1">
                 </fieldset>
             </form>
         </nav>
     </header>
     <section>
         <div class="products">
-            <div class="product"></div>
+            <!-- <div class="product">
+                <p>name:</p>
+                <p>quantity:</p>
+                <p>group:</p>
+                <p>id:</p>
+            </div> -->
         </div>
     </section>
     <script src="./app.js"></script>
