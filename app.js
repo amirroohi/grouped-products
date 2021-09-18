@@ -5,7 +5,9 @@ const groupSelection = document.querySelector("#existed-groups");
 const productButton = document.querySelector("#add-product-btn");
 const productNumber = document.querySelector("#product-number");
 const boardProducts = document.querySelector(".products");
-let deleteProduct = document.querySelectorAll(".delete-btn");
+const navbarListIcon = document.querySelectorAll(".nav-list-link")
+// let deleteProduct = document.querySelectorAll(".delete-btn");
+
 
 // console.log(groupSelection);
 let groupNames = [];
@@ -16,6 +18,22 @@ let deleteBtn = [];
 // });
 // add events----------------------------
 // document.addEventListener("DOMContentLoaded", getLocalProducts);
+
+
+// navbarListIcon.forEach((n) => {
+//     n.addEventListener("mouseover", mouseOver);
+// });
+// navbarListIcon.forEach((n) => {
+//     n.addEventListener("mouseout", mouseOut);
+// });
+// function mouseOver(){
+//     navbarListIcon.style.fontSize = "2rem";
+// }
+// function mouseOut(){
+//     navbarListIcon.style.fontSize = "1rem";
+// }
+
+
 groupButton.addEventListener("click", () => {
     let groupInputContext = groupInput.value;
     groupInput.value = "";
@@ -24,52 +42,46 @@ groupButton.addEventListener("click", () => {
     // console.log(productNames);
     addGroupSelection(groupNames);
 });
+
+
 productButton.addEventListener("click",() => {
     let productInputContext = productInput.value;
     productInput.value = "";
     productNames.push(createProduct(productInputContext,(productNames.length+1),productNumber.value,groupSelection.value));
     console.log(productNames);
     renderProducts(productNames);
-    // saveLocalProducts(productNames);
 
 });
-function removeProduct(productNames){
-    const removeButton = [...document.querySelectorAll(".delete-btn")];
-    deleteBtn = removeButton;
-    removeButton.forEach((btn) => {
-        const id =btn.dataset.id;
-        const
-    })
-}
+
+
+// function removeProduct(){
+//     const removeButton = [...document.querySelectorAll(".delete-btn")];
+//     deleteBtn = removeButton;
+//     removeButton.forEach((btn) => {
+//         btn.addEventListener("click",(e) =>{
+//         e.target.innerText = "Deleted";
+//         e.target.disabled = true;
+//         });
+//     });
+// }
 // deleteProduct.addEventListener("click",()=>{});
 // function deletedProduct(){
 //     productNames.splice((productNames.id)-1,1);
 // }
 // show products on board----------------
 function renderProducts(products){
-    // const productDiv = document.createElement("div");
-    // productDiv.classList.add("product");
-    // const addNewProduct = `
-    //          <p>name:    ${products.productName}</p>
-    //          <p>quantity:${products.quantity}</p>
-    //          <p>group:   ${products.group}</p>
-    //          <p>id:      ${(products.id)}</p>
-    //          <button type="button" id="delete-btn">delete</button>`;
-    // productDiv.innerHTML = addNewProduct;
-    // boardProducts.innerHTML = productDiv;
-    
     let renderedProducts = "";
     products.forEach((product) => {
         renderedProducts += `
         <div class="product">
-            <p>Product:    ${product.productName}</p>
-            <p>Quantity:   ${product.quantity}</p>
-            <p>Group:   ${product.group}</p>
+            <p>   ${product.group}</p>
+            <p>    ${product.productName}</p>
+            <p>   ${product.quantity}</p>
             <button type="button" class="delete-btn" data-id="${product.id}">Delete</button>
-            </div>`;
+        </div>`;
         });
         boardProducts.innerHTML = renderedProducts;
-    }
+}
     // <p>id:      ${(product.id)}</p>
 // show group in select tag
 function addGroupSelection(groups){
@@ -96,20 +108,4 @@ function createProduct(productName,id,quantity,group){
         group,
     }
 }
-// local storage-----------------------
-// function saveLocalProducts(productsList){
-//     let savedProducts = localStorage.getItem("products")
-//       ? JSON.parse(localStorage.getItem("products"))
-//       : [];
-//     savedProducts.push(productsList);
-//     localStorage.setItem("products", JSON.stringify(savedProducts));
-// }
-// function getLocalProducts(){
-//     let savedProducts = localStorage.getItem("products")
-//       ? JSON.parse(localStorage.getItem("products"))
-//       : [];
-//       savedProducts.forEach((product) => {
 
-//       });
-
-// }
