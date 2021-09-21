@@ -6,7 +6,7 @@ const productButton = document.querySelector("#add-product-btn");
 const productNumber = document.querySelector("#product-number");
 const boardProducts = document.querySelector(".products");
 const navbarListIcon = document.querySelectorAll(".nav-list-link")
-// let deleteProduct = document.querySelectorAll(".delete-btn");
+const deleteProduct = document.querySelector(".delete-btn");
 
 
 // console.log(groupSelection);
@@ -14,46 +14,39 @@ let groupNames = [];
 let productNames = [];
 let deleteBtn = [];
 // groupInput.addEventListener("input",(e)=>{
-//     console.log(e.target.value);
-// });
-// add events----------------------------
-// document.addEventListener("DOMContentLoaded", getLocalProducts);
-
-
-// navbarListIcon.forEach((n) => {
-//     n.addEventListener("mouseover", mouseOver);
-// });
-// navbarListIcon.forEach((n) => {
-//     n.addEventListener("mouseout", mouseOut);
-// });
-// function mouseOver(){
-//     navbarListIcon.style.fontSize = "2rem";
-// }
-// function mouseOut(){
-//     navbarListIcon.style.fontSize = "1rem";
-// }
-
-
+    //     console.log(e.target.value);
+    // });
+    // add events----------------------------
+document.addEventListener("DOMContentLoaded", getGroupSelection);
+document.addEventListener("DOMContentLoaded", getProductRendered);
+    
 groupButton.addEventListener("click", () => {
     let groupInputContext = groupInput.value;
-    groupInput.value = "";
     groupNames.push(createGroup(groupInputContext,(groupNames.length+1)));
     console.log(groupNames);
     // console.log(productNames);
     addGroupSelection(groupNames);
+    saveGroupSelection(groupInput.value);
+    groupInput.value = "";
 });
-
 
 productButton.addEventListener("click",() => {
     let productInputContext = productInput.value;
-    productInput.value = "";
-    productNames.push(createProduct(productInputContext,(productNames.length+1),productNumber.value,groupSelection.value));
+    let productInformation = createProduct(productInputContext,(productNames.length+1),productNumber.value,groupSelection.value);
+    productNames.push(productInformation);
     console.log(productNames);
+    savedProductQuantity(productNumber.value);
     renderProducts(productNames);
+    saveProductRendered(productInformation);
+    getProductRendered();
 
+    productInput.value = "";
 });
 
+deleteProduct.addEventListener("click",() => {
+    console.log("read");
 
+});
 // function removeProduct(){
 //     const removeButton = [...document.querySelectorAll(".delete-btn")];
 //     deleteBtn = removeButton;
@@ -74,15 +67,18 @@ function renderProducts(products){
     products.forEach((product) => {
         renderedProducts += `
         <div class="product">
-            <p>   ${product.group}</p>
-            <p>    ${product.productName}</p>
-            <p>   ${product.quantity}</p>
-            <button type="button" class="delete-btn" data-id="${product.id}">Delete</button>
+            <p><span>${product.group}</span>  has
+            <span>${product.quantity}</span> number of
+            <span>${product.productName}</span>  product(s).
+            </p>
+            <button type="button" class="delete-btn">Delete</button>
         </div>`;
-        });
-        boardProducts.innerHTML = renderedProducts;
+    });
+    boardProducts.innerHTML = renderedProducts;
 }
-    // <p>id:      ${(product.id)}</p>
+function removeProduct(deleteBtn){
+    console.log(deleteBtn);
+}
 // show group in select tag
 function addGroupSelection(groups){
     let selection = "";
@@ -108,4 +104,48 @@ function createProduct(productName,id,quantity,group){
         group,
     }
 }
+// local
+// groups
+function saveGroupSelection(group){
+    let savedGroups = localStorage.getItem("groups") ? JSON.parse(localStorage.getItem("groups")) : [];
+    // if(group !== ""){
+    savedGroups.push(group);
+    // }
+    localStorage.setItem("groups", JSON.stringify(savedGroups));
+}
+
+function getGroupSelection(){
+    let savedGroups = localStorage.getItem("groups") ? JSON.parse(localStorage.getItem("groups")) : [];
+    let selection = "";
+    savedGroups.forEach((groups) => {
+        // if(groups !== ""){
+        selection += `<option>${groups}</option>`;
+        // }
+    groupSelection.innerHTML = selection;
+    });
+}
+
+// products
+function saveProductRendered(product){
+    let savedProducts = localStorage.getItem("products") ? JSON.parse(localStorage.getItem("products")) : [];
+    savedProducts.push(product);
+    localStorage.setItem("products", JSON.stringify(savedProducts));
+}
+function getProductRendered(){
+    let savedProducts = localStorage.getItem("products") ? JSON.parse(localStorage.getItem("products")) : [];
+    let renderedProducts = "";
+        savedProducts.forEach((product) => { 
+                renderedProducts += `
+                <div class="product">
+                    <p><span>${product.group}</span>  has
+                    <span>${product.quantity}</span> number of
+                    <span>${product.productName}</span>  product(s).
+                    </p>
+                    <button type="button" class="delete-btn">Delete</button>
+                </div>`;
+            });
+
+    boardProducts.innerHTML = renderedProducts;
+}
+// quantity
 

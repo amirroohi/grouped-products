@@ -5,7 +5,7 @@
 }
 body{
     background-color: #efefef;
-    font-family:Georgia, 'Times New Roman', Times, serif;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
     /* color: #ffffff; */
 }
 header{
@@ -28,7 +28,7 @@ header{
     align-items: center;
     justify-content: center;
     list-style: none;
-    margin: 1rem;
+    margin: 0.5rem;
     width: 50px;
     height: 50px;
 }
@@ -37,6 +37,10 @@ header{
 }
 .nav-list-link:hover{
     font-size: 2rem;
+}
+.line{
+    height: 2px;
+    background-color: #000000;
 }
 .grouping-handle-section{
     height: 250px;
@@ -47,14 +51,14 @@ header{
     align-items: center;
 }
 #group{
-    width: 32%;
+    width: 40%;
     margin: 0;
     padding: 0.5rem;
     display: flex;
     flex-direction: row;
 }
 #product{
-    width: 68%;
+    width: 75%;
     margin: 0;
     padding: 0.5rem;
     display: flex;
@@ -63,9 +67,8 @@ header{
 fieldset{
     width: 100%;
     padding: 1rem;
-    border-color: #000000;
+    border-color: #aaaaaa;
     border-radius: 5px;
-    
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -98,30 +101,30 @@ select{
     padding: 2rem;
     margin: 0 auto;
     /* background-color: #BFA2DB; */
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    grid-column-gap: 2rem;
-    grid-row-gap: 2rem;
-}
-.product{
-    width: 200px;
-    height: 200px;
-    padding: 20px;
-    background-color: #F0D9FF;
-    border-radius: 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    box-shadow: 6px 6px 15px -4px ;
-    z-index: 1;
+}
+.product{
+    margin: 0.5rem;
+    width: 60%;
+    height: 50px;
+    padding: 15px;
+    background-color: #bdbdbd;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 6px 6px 15px -7px ;
 }
 .delete-btn{
-    padding: 0.2rem 0.7rem;
+    padding: 0.5rem 1rem;
     border: none;
-    background-color: #c4bec8;
+    background-color: #efefef;
     border-radius: 4px;
-    margin-top: 40px;
+    margin-left: 40px;
 }
 .delete-btn:hover{
     background-color: rgb(185, 183, 183);
